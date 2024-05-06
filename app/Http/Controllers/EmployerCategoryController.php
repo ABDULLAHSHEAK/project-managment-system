@@ -26,7 +26,7 @@ class EmployerCategoryController extends Controller
         EmployerCategory::create([
             'category_name' => $request->employer_category_name,
         ]);
-        Toastr::success('Employe Create Success', 'Success');
+        Toastr::success('Employer Category Create Success', 'Success');
         return redirect()->back();
     }
 
@@ -43,7 +43,7 @@ class EmployerCategoryController extends Controller
         $update->update([
             'category_name' => $request->employer_category_name,
         ]);
-        Toastr::success('Employe Update Success', 'Success');
+        Toastr::success('Employe Category Update Success', 'Success');
         return redirect(url('dashboard/employer-category'));
     }
 

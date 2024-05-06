@@ -30,7 +30,7 @@
     <!-- ------- main content --------  -->
     <div class="container-fluid">
         <div class="row">
-            <a href="{{ route('user.view') }}" class="btn btn-success float-end">All User</a>
+            <a href="{{ route('user.view') }}" class="btn btn-success float-end">Back</a>
             <div class="mainForm">
                 <div class="row">
                     <div class="col-12 col-md-8 p-1">

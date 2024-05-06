@@ -30,8 +30,8 @@
     <!-- ------- main content --------  -->
     <div class="container-fluid">
         <div class="row">
-            <a href="{{ url('dashboard/employer-category') }}" class="btn btn-success float-end">Employer Category</a>
             <div class="mainForm">
+                <a href="{{ url('dashboard/employer-category') }}" class="btn btn-success float-end">Back</a>
                 <div class="row">
                     <div class="col-12 col-md-8 p-1">
                         <div class="card">

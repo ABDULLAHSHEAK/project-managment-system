@@ -94,7 +94,7 @@ class EmployerController extends Controller
             }
         }
         $data->delete();
-        Toastr::warning('Client Delete Success', 'Success');
+        Toastr::warning('Employer Delete Success', 'Success');
         return redirect()->back();
     }
     public function details($id)

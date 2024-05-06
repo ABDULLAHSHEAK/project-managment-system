@@ -35,13 +35,6 @@
     </div>
     <hr>
 
-    {{-- Shift --}}
-
-    <a href="{{ route('view.shift') }}" class="side-bar-item">
-        <i class="bi bi-person-circle"></i>
-        <span class="side-bar-item-caption">Shift</span>
-    </a>
-
     <!-- Categorys  -->
 
     <div class="mainmenu">
@@ -103,76 +96,6 @@
         </div>
     </div>
 
-    <!-- package  -->
-
-    <div class="mainmenu">
-        <a href="javascript:void(0)" class="side-bar-item" id="firstmenu">
-            <i class="bi bi-bag"></i>
-            <span class="side-bar-item-caption">Package</span>
-            <i class="bi bi-arrow-right-short sub-icone"></i>
-        </a>
-        <div class="sub-menu" id="submenu" style="display: none;">
-            <a href="{{url('dashboard/package')}}">
-                <i class="bi bi-dash-circle"></i>
-                <span>All Pakages</span>
-            </a> <br>
-            <a href="{{url('dashboard/package/create')}}">
-                <i class="bi bi-dash-circle"></i>
-                <span>Add Pakages</span>
-            </a>
-        </div>
-    </div>
-
-    <!-- member  -->
-
-    <div class="mainmenu">
-        <a href="javascript:void(0)" class="side-bar-item" id="firstmenu">
-            <i class="bi bi-people"></i>
-            <span class="side-bar-item-caption">Member</span>
-            <i class="bi bi-arrow-right-short sub-icone"></i>
-        </a>
-        <div class="sub-menu" id="submenu" style="display: none;">
-            <a href="{{url('dashboard/member')}}">
-                <i class="bi bi-dash-circle"></i>
-                <span>All Member</span>
-            </a> <br>
-            <a href="{{url('dashboard/member/create')}}">
-                <i class="bi bi-dash-circle"></i>
-                <span>Add Member</span>
-            </a> <br>
-            <a href="{{route('old.member')}}">
-                <i class="bi bi-dash-circle"></i>
-                <span>Old Member</span>
-            </a>
-        </div>
-    </div>
-
-    <!-- health Checkup   -->
-
-    <div class="mainmenu">
-        <a href="{{url('dashboard/health-status')}}" class="side-bar-item" id="firstmenu">
-            <i class="bi bi-heart-pulse"></i>
-            <span class="side-bar-item-caption">Health Checkup </span>
-        </a>
-    </div>
-
-    <!-- make payment  -->
-
-    <div class="mainmenu">
-        <a href="payment.html" class="side-bar-item" id="firstmenu">
-            <i class="bi bi-currency-dollar"></i>
-            <span class="side-bar-item-caption">Make Payment </span>
-        </a>
-    </div>
-
-    <!-- transaction  -->
-
-    <div class="mainmenu">
-        <a href="transaction.html" class="side-bar-item" id="firstmenu">
-            <i class="bi bi-receipt"></i>
-            <span class="side-bar-item-caption">Transaction </span>
-        </a>
-    </div>
 
     <!-- report  -->
 
