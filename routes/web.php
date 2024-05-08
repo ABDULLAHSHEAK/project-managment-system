@@ -1,12 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NoteController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HealthController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\TransactionController;
@@ -44,15 +47,6 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::get('delete-user/{id}', [UserController::class, 'DeleteUser'])->name('delete.user');
 
 
-    // ---------- Shift Route -----------
-    Route::get('all-shift', [ShiftController::class, 'index'])->name('view.shift');
-    Route::get('add-shift', [ShiftController::class, 'AddShift'])->name('add.shift');
-    Route::post('store-shift', [ShiftController::class, 'StoreShift'])->name('store.shift');
-    Route::get('edit-shift/{id}', [ShiftController::class, 'EditShift'])->name('edit.shift');
-    Route::post('edit-shift/{id}', [ShiftController::class, 'UpdateShift'])->name('update.shift');
-    Route::get('delete-shift/{id}', [ShiftController::class, 'DeleteShift'])->name('delete.shift');
-
-
     // -------- Employer Category Route ------------
     Route::resource('employer-category', EmployerCategoryController::class);
     Route::get('employer-category/{id}/delete', [EmployerCategoryController::class, 'destroy']);
@@ -73,26 +67,29 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::get('employer/{id}/details', [EmployerController::class, 'details']);
 
 
-    // -------- Package Route ------------
-    Route::resource('package', PackageController::class);
-    Route::get('package/{id}/delete', [PackageController::class, 'destroy'])->name('delete.package');
+    // -------- Project Route ------------
+    Route::resource('project', ProjectController::class);
+    Route::get('project/{id}/delete', [ProjectController::class, 'destroy']);
+    Route::get('project/{id}/details', [ProjectController::class, 'details']);
+
+
+    // -------- Note Route ------------
+    Route::resource('note', NoteController::class);
+    Route::post('project/{id}/details', [NoteController::class, 'AddNote'])->name('add.note');
+    Route::get('note-add/{id}', [NoteController::class, 'NoteAdd']);
+    Route::post('note-add/{id}', [NoteController::class, 'SaveNote']);
+    Route::get('note/{id}/delete', [NoteController::class, 'destroy']);
+    Route::get('note/{id}/details', [NoteController::class, 'details']);
+
+
+    // -------- Task Route ------------
+    Route::resource('task', TaskController::class);
+    Route::post('project/{id}/details', [NoteController::class, 'AddNote'])->name('add.note');
+    Route::get('task-add/{id}', [TaskController::class, 'TaskAdd']);
+    Route::post('task-add/{id}', [TaskController::class, 'SaveTask']);
+    Route::get('task/{id}/delete', [TaskController::class, 'destroy']);
+    Route::get('task/{id}/details', [TaskController::class, 'details']);
 
 
 
-    // -------- Member Route ------------
-    Route::resource('member', MemberController::class);
-    Route::get('old-member', [MemberController::class, 'oldMember'])->name('old.member');
-    Route::get('member/{id}/delete', [MemberController::class, 'destroy'])->name('delete.member');
-
-
-    // -------- Health Status Route ------------
-    Route::resource('health-status', HealthController::class);
-    Route::get('health-details/{id}',[HealthController::class ,'details'])->name('health.details');
-    Route::get('health-create/{id}',[HealthController::class ,'create'])->name('health.create');
-    Route::post('health-store', [HealthController::class, 'HealthStore'])->name('health.store');
-    Route::get('health-print/{id}',[HealthController::class ,'Print'])->name('health.print');
-    Route::get('health-delete/{id}',[HealthController::class ,'HealthDelete'])->name('health.delete');
-
-    // ------------- Transaction Route ----------
-    Route::get('all-transactions',[TransactionController::class,'index'])->name('tran.view');
 });

@@ -159,4 +159,9 @@
         </div>
     </div>
     <hr>
+    <script>
+        function updateOutput(val) {
+            document.getElementById('output').textContent = val;
+        }
+    </script>
 @endsection

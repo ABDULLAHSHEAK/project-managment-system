@@ -96,6 +96,34 @@
         </div>
     </div>
 
+    <!-- Project  -->
+
+    <div class="mainmenu">
+        <a href="javascript:void(0)" class="side-bar-item" id="firstmenu">
+            <i class="bi bi-person-video3"></i>
+            <span class="side-bar-item-caption">Project</span>
+            <i class="bi bi-arrow-right-short sub-icone"></i>
+        </a>
+        <div class="sub-menu" id="submenu" style="display: none;">
+            <a href="{{url('dashboard/project')}}">
+                <i class="bi bi-dash-circle"></i>
+                <span>All Project</span>
+            </a> <br>
+            <a href="{{ url('dashboard/project/create') }}">
+                <i class="bi bi-dash-circle"></i>
+                <span>Add Project</span>
+            </a><br>
+            <a href="{{ url('dashboard/note') }}">
+                <i class="bi bi-dash-circle"></i>
+                <span>Note</span>
+            </a><br>
+            <a href="{{ url('dashboard/task') }}">
+                <i class="bi bi-dash-circle"></i>
+                <span>Task</span>
+            </a>
+        </div>
+    </div>
+
 
     <!-- report  -->
 
