@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.master')
 @section('title')
-    All-Users
+    All Collection
 @endsection
 @section('content')
     <!---- page header -- -- -->
@@ -10,12 +10,12 @@
                 <div class=" px-3 py-3">
                     <div class="row justify-content-between ">
                         <div class="align-items-center col">
-                            <h4>All Users</h4>
+                            <h4>Collection Page</h4>
                         </div>
                         <div class="align-items-center col">
                             <div class="float-end m-0">
-                                <span><a href="{{ route('home') }}" style="color: #007bff">Home</a> /
-                                    <span>User</span></span>
+                                <span><a href="index.html" style="color: #007bff">Home</a> /
+                                    <span>Collection</span></span>
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
     <!-- ------- main content --------  -->
     <div class="container-fluid">
         <div class="row">
-            <a href="{{ route('add.user') }}" class="btn btn-success float-end">Add User</a>
+            <a href="{{ url('dashboard/collection/create') }}" class="btn btn-success float-end">Add Collection</a>
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
@@ -38,32 +38,23 @@
                             <thead class="bg-gradient-light">
                                 <tr>
                                     <th>NO:</th>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Number</th>
-                                    <th>User Type</th>
+                                    <th>Project Amount</th>
+                                    <th>Collection</th>
+                                    <th>Date</th>
+                                    <th>Project Name</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $user)
+                                @foreach ($data as $collection)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $collection->project->amount }} - bdt</td>
+                                        <td>{{ $collection->collect }} - bdt</td>
+                                        <td>{{ $collection->date }}</td>
+                                        <td>{{ $collection->project->name }}</td>
                                         <td>
-                                            @if ($user->img == null)
-                                                <img src="{{ asset('admin/images/user.webp') }}" alt=""
-                                                    width="60">
-                                            @else
-                                                <img src="{{ asset('image/user') }}/{{ $user->img }}" alt=""
-                                                    width="60">
-                                            @endif
-                                        </td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->number }}</td>
-                                        <td>{{ $user->user_type }}</td>
-                                        <td>
+                                            <!-- Example single danger button -->
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-danger dropdown-toggle"
                                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -71,21 +62,22 @@
                                                 </button>
                                                 <ul class="dropdown-menu">
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('edit.user', $user->id) }}">Edit</a></li>
-                                                    <li><a class="dropdown-item" href="#">User Profile</a></li>
+                                                            href="{{ url('/dashboard/collection/' . $collection->id . '/details') }}">View
+                                                            Details</a></li>
+                                                    <li><a class="dropdown-item"
+                                                            href="{{ url('dashboard/collection/' . $collection->id . '/edit') }}">Edit</a>
+                                                    </li>
                                                     <li>
                                                         <hr class="dropdown-divider">
                                                     </li>
                                                     <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                            data-bs-target="#exampleModal{{ $user->id }}">Delete</a>
-
+                                                            data-bs-target="#collectionDelete{{ $collection->id }}">Delete</a>
                                                     </li>
-
                                                 </ul>
                                             </div>
                                         </td>
                                     </tr>
-                                    @include('dashboard.modal.user-delete')
+                                    @include('dashboard.modal.collection-delete')
                                 @endforeach
                             </tbody>
                         </table>

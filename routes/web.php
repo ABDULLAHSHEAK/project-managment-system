@@ -8,11 +8,14 @@ use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HealthController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\ExpenseCategoryController;
 use App\Http\Controllers\ProjectCategoryController;
 use App\Http\Controllers\EmployerCategoryController;
 
@@ -43,6 +46,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::post('store-user', [UserController::class, 'StoreUser'])->name('store.user');
 
     Route::get('edit-user/{id}', [UserController::class, 'EditUser'])->name('edit.user');
+    Route::post('edit-user/{id}', [UserController::class, 'UpdateUser'])->name('update.user');
     Route::get('profile-user', [UserController::class, 'ProfileUser'])->name('profile.user');
     Route::get('delete-user/{id}', [UserController::class, 'DeleteUser'])->name('delete.user');
 
@@ -90,6 +94,28 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::get('task/{id}/delete', [TaskController::class, 'destroy']);
     Route::get('task/{id}/details', [TaskController::class, 'details']);
 
+
+
+    // -------- Task Route ------------
+    Route::resource('collection', CollectionController::class);
+
+    Route::post('project/{id}/details', [NoteController::class, 'AddNote'])->name('add.note');
+    Route::get('collection-add/{id}', [CollectionController::class, 'CollectionAdd']);
+    Route::post('task-add/{id}', [TaskController::class, 'SaveTask']);
+    Route::get('collection/{id}/delete', [CollectionController::class, 'destroy']);
+    Route::get('task/{id}/details', [TaskController::class, 'details']);
+
+
+    // -------- Project Category Route ------------
+    Route::resource('expense-category', ExpenseCategoryController::class);
+    Route::get('expense-category/{id}/delete', [ExpenseCategoryController::class, 'destroy']);
+    Route::get('expense-category/{id}/details', [ExpenseCategoryController::class, 'details']);
+
+
+    // -------- Project Category Route ------------
+    Route::resource('expense', ExpenseController::class);
+    Route::get('expense/{id}/delete', [ExpenseController::class, 'destroy']);
+    Route::get('expense/{id}/details', [ExpenseController::class, 'details']);
 
 
 });

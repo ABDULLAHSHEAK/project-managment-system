@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.master')
 @section('title')
-    All-Users
+    Expense 
 @endsection
 @section('content')
     <!---- page header -- -- -->
@@ -10,12 +10,12 @@
                 <div class=" px-3 py-3">
                     <div class="row justify-content-between ">
                         <div class="align-items-center col">
-                            <h4>All Users</h4>
+                            <h4>All Expense </h4>
                         </div>
                         <div class="align-items-center col">
                             <div class="float-end m-0">
                                 <span><a href="{{ route('home') }}" style="color: #007bff">Home</a> /
-                                    <span>User</span></span>
+                                    <span>Expense </span></span>
                             </div>
                         </div>
                     </div>
@@ -30,62 +30,52 @@
     <!-- ------- main content --------  -->
     <div class="container-fluid">
         <div class="row">
-            <a href="{{ route('add.user') }}" class="btn btn-success float-end">Add User</a>
             <div class="card">
+                <a href="{{url('dashboard/expense/create')}}" class="btn btn-success">Add Expense </a>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="tableData" class="table">
                             <thead class="bg-gradient-light">
                                 <tr>
                                     <th>NO:</th>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Number</th>
-                                    <th>User Type</th>
+                                    <th>Category</th>
+                                    <th>Amount</th>
+                                    <th>ReMerk</th>
+                                    <th>Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $user)
+                                @foreach ($data as $expense)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $expense->category->name }}</td>
+                                        <td>{{ $expense->amount}}</td>
+                                        <td>{{ implode(' ', array_slice(str_word_count($expense->note, 1), 0, 5)) }}</td>
+
+                                        <td>{{$expense->date}}</td>
                                         <td>
-                                            @if ($user->img == null)
-                                                <img src="{{ asset('admin/images/user.webp') }}" alt=""
-                                                    width="60">
-                                            @else
-                                                <img src="{{ asset('image/user') }}/{{ $user->img }}" alt=""
-                                                    width="60">
-                                            @endif
-                                        </td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->number }}</td>
-                                        <td>{{ $user->user_type }}</td>
-                                        <td>
+                                             <!-- Example single danger button -->
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-danger dropdown-toggle"
                                                     data-bs-toggle="dropdown" aria-expanded="false">
                                                     Options
                                                 </button>
                                                 <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="{{url('dashboard/expense/' . $expense->id.'/details')}}">View Details</a></li>
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('edit.user', $user->id) }}">Edit</a></li>
-                                                    <li><a class="dropdown-item" href="#">User Profile</a></li>
+                                                            href="{{ url('dashboard/expense/' . $expense->id.'/edit') }}">Edit</a>
+                                                    </li>
                                                     <li>
                                                         <hr class="dropdown-divider">
                                                     </li>
                                                     <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                            data-bs-target="#exampleModal{{ $user->id }}">Delete</a>
-
-                                                    </li>
-
+                                                            data-bs-target="#expenseDelete{{ $expense->id }}">Delete</a></li>
                                                 </ul>
                                             </div>
                                         </td>
                                     </tr>
-                                    @include('dashboard.modal.user-delete')
+                                  @include('dashboard.modal.expense-delete')
                                 @endforeach
                             </tbody>
                         </table>

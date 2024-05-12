@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
+use App\Models\User;
 use App\Models\Employer;
 use Illuminate\Http\Request;
 use App\Models\EmployerCategory;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\File;
@@ -19,10 +22,11 @@ class EmployerController extends Controller
     public function create()
     {
         $categorys = EmployerCategory::get();
-        return view('dashboard.pages.employer.create',compact('categorys'));
+        return view('dashboard.pages.employer.create', compact('categorys'));
     }
     public function store(Request $request)
     {
+
         $employeData = $request->validate([
             'name' => 'required|string|max:30',
             'email' => 'required|email',
@@ -41,14 +45,22 @@ class EmployerController extends Controller
             $employeData['img'] = 'demo.webp';
         }
 
-        Employer::create($employeData);
+        $employer = Employer::create($employeData);
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'number' => $request->phone,
+            'password' => $request->password,
+            'employer_id' => $employer->id
+        ]);
         Toastr::success('Employer Create Success', 'Success');
-        return redirect()->back();
+        return redirect()->back()->with('error');
     }
+
     public function edit(Employer $employer)
     {
         $categorys = EmployerCategory::get();
-        return view('dashboard.pages.employer.edit', compact('employer','categorys'));
+        return view('dashboard.pages.employer.edit', compact('employer', 'categorys'));
     }
     public function update(Request $request, Employer $employer)
     {

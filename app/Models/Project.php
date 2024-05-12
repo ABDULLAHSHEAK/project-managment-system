@@ -13,8 +13,8 @@ class Project extends Model
         'start_date',
         'deadline',
         'summary',
-        'member',
         'status',
+        'amount',
         'completion_status',
         'category_id',
         'client_id',
@@ -28,7 +28,8 @@ class Project extends Model
     }
 
     public function memberData(){
-        return $this->belongsTo(Employer::class ,'member');
+        return $this->hasOne(ProjectMember::class,'project_id');
     }
+
 
 }

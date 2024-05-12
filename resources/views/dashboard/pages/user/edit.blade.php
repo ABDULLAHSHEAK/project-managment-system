@@ -30,19 +30,19 @@
     <!-- ------- main content --------  -->
     <div class="container-fluid">
         <div class="row">
-            <a href="{{ route('user.view') }}" class="btn btn-success float-end">Back</a>
+            <a href="{{ route('user.view') }}" class="btn btn-success float-end">All User</a>
             <div class="mainForm">
                 <div class="row">
                     <div class="col-12 col-md-8 p-1">
                         <div class="card">
                             <div class="card-body">
-                                <form method="POST" action="{{ route('store.user') }}" enctype="multipart/form-data">
+                                <form method="POST" action="{{ route('update.user',$data->id) }}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="inputEmail" class="form-label">User Name *</label>
                                         <input type="text" id="name" name="name"
                                             class="form-control @error('name') is-invalid @enderror"
-                                            placeholder="Enter Your First Name" value="{{ old('name') }}">
+                                            placeholder="Enter Your First Name" value="{{ old('name', $data->name) }}">
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -54,7 +54,7 @@
                                         <label for="inputEmail" class="form-label">Email address *</label>
                                         <input type="email" id="email" name="email"
                                             class="form-control @error('email') is-invalid @enderror"
-                                            placeholder="Enter Your Email" value="{{ old('email') }}">
+                                            placeholder="Enter Your Email" value="{{ old('email', $data->email) }}">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -65,13 +65,14 @@
                                         <label for="inputEmail" class="form-label">Mobile Number *</label>
                                         <input type="text" id="number" name="number"
                                             class="form-control @error('number') is-invalid @enderror"
-                                            placeholder="Enter Your Phone Number" value="{{ old('number') }}">
+                                            placeholder="Enter Your Phone Number" value="{{ old('number', $data->number) }}">
                                         @error('number')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
+                                    {{-- password  --}}
                                     <div class="mb-3">
                                         <label for="inputPassword" class="form-label">Password *</label>
                                         <input type="password" id="password" name="password"
@@ -83,65 +84,20 @@
                                             </span>
                                         @enderror
                                     </div>
+                                    {{-- user type  --}}
                                     <label class="form-label">User Type *</label>
                                     <select name="user_type" class="form-control @error('user_type') is-invalid @enderror">
-                                        <option value="admin">admin</option>
-                                        <option value="employer">Employer</option>
-                                        <option value="client">Client</option>
+                                        <option value="{{$data->user_type}}">{{$data->user_type}}</option>
+                                        <option value="admin" >admin </option>
+                                        <option value="manager">manager</option>
+                                        <option value="editor" >editor</option>
                                     </select>
                                     @error('user_type')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-
-                                    {{-- ----- employer and client input ---  --}}
-                                    <div class="row">
-                                        <div class="col-md-6 col-12">
-                                            {{-- Team Employer_ids --}}
-                                            <div class="mb-3">
-                                                <label for="employer_id" class="form-label">Member *</label>
-                                                <select id="employer_id" name="employer_id"
-                                                    class="form-select @error('employer_id') is-invalid @enderror">
-                                                    <option value="">Select Member</option>
-                                                    @foreach ($employers as $employer)
-                                                        <option value="{{ $employer->id }}"
-                                                            {{ old('employer') == $employer->id ? 'selected' : '' }}>
-                                                            {{ $employer->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                @error('employer_id')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            {{-- Client --}}
-                                            <div class="mb-3">
-                                                <label for="client_id" class="form-label">Client *</label>
-                                                <select id="client_id" name="client_id"
-                                                    class="form-select @error('client_id') is-invalid @enderror">
-                                                    <option value="">Select Category</option>
-                                                    @foreach ($clients as $client)
-                                                        <option value="{{ $client->id }}"
-                                                            {{ old('client_id') == $client->id ? 'selected' : '' }}>
-                                                            {{ $client->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                @error('client_id')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {{-- ---- file input ---  --}}
+                                    {{-- img --}}
                                     <div class="mb-3">
                                         <label for="img" class="form-label">Image</label>
                                         <input type="file" id="img" name="img"
@@ -151,6 +107,8 @@
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
+                                        <img src="{{ asset('image/user') }}/{{ $data->img }}" alt="User Img"
+                                            class="rounded" width="80">
                                     </div> <br>
 
                                     <button type="submit" class="btn btn-primary d-block w-100 mb-3">Singup</button>

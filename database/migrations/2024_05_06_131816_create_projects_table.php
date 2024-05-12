@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('summary');
             $table->enum('status',['not_started','running','canceled','completed']);
             $table->string('completion_status');
-            $table->foreignId('member')->constrained('employers');
+            $table->string('amount');
             $table->foreignId('client_id')->constrained('clients');
             $table->foreignId('category_id')->constrained('project_categories');
             $table->timestamps();

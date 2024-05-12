@@ -112,6 +112,32 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        {{-- --- project collection ----  --}}
+                                        <div class="row mt-3">
+                                            <div class="col-md-12">
+                                                <div class="bg-light p-3">
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="row">
+                                                                <div class="col-md-4 col-12">
+                                                                    <p>Project Amount</p>
+                                                                    {{$project->amount}} - bdt
+                                                                </div>
+                                                                <div class="col-md-4 col-12">
+                                                                    <p>Total Collection</p>
+                                                                    {{$collection}}
+                                                                </div>
+                                                                <div class="col-md-4 col-12">
+                                                                    <p>Due Payment</p>
+                                                                      {{ number_format((float)$project->amount - (float)$collection, 2, '.', '') }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-12"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         {{-- --- project details----  --}}
                                         <div class="row mt-3">
                                             <div class="col-md-12">
@@ -139,7 +165,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($members as $employer)
+                                                    @foreach ($memberData as $employer)
                                                         <tr>
                                                             <td>{{ $loop->iteration }}</td>
                                                             <td><img src="{{ asset('image/employer') }}/{{ $employer->img }}"

@@ -39,7 +39,6 @@
                                 <tr>
                                     <th>NO:</th>
                                     <th>Project Name</th>
-                                    <th>Members</th>
                                     <th>Start Date</th>
                                     <th>Deadline</th>
                                     <th>Client</th>
@@ -53,11 +52,6 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $project->name }}</td>
-                                        <td>{{ $project->memberData->name }}</td>
-                                       {{-- {{ dd($project->memberData)}} --}}
-                                        {{-- @foreach ($project->memberData as $member)
-                                          {{dd( $project->member) }}
-                                        @endforeach --}}
                                         <td>{{ $project->start_date }}</td>
                                         <td>{{ $project->deadline }}</td>
                                         <td>{{ $project->client->name }}</td>
@@ -90,8 +84,9 @@
                                                     <li><a class="dropdown-item"
                                                             href="{{ url('dashboard/task-add/' . $project->id) }}">Add Task</a>
                                                     </li>
-                                                    <li><a class="dropdown-item" href="#" title="Comming Soon">Make
-                                                            Payment</a></li>
+                                                    <li><a class="dropdown-item"
+                                                            href="{{ url('dashboard/collection-add/' . $project->id) }}">Add Collection</a>
+                                                    </li>
                                                     <li>
                                                         <hr class="dropdown-divider">
                                                     </li>

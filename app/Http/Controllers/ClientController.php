@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -41,7 +42,14 @@ class ClientController extends Controller
             $clientData['img'] = 'demo.webp';
         }
 
-        Client::create($clientData);
+        $client = Client::create($clientData);
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'number' => $request->phone,
+            'password' => $request->password,
+            'client_id' => $client->id
+        ]);
         Toastr::success('Client Create Success', 'Success');
         return redirect()->back();
     }
@@ -67,9 +75,9 @@ class ClientController extends Controller
                     File::delete($previousImage);
                 }
             }
-                $imageName = time() . '.' . $request->img->extension();
-                $request->img->move(public_path('image/client'), $imageName);
-                $clientData['img'] = $imageName;
+            $imageName = time() . '.' . $request->img->extension();
+            $request->img->move(public_path('image/client'), $imageName);
+            $clientData['img'] = $imageName;
         } else {
             $imageName = $client->img;
         }
@@ -84,18 +92,20 @@ class ClientController extends Controller
         $data = Client::findOrFail($id);
         // Delete image file if it exists
         if ($data->img) {
-            if($data->img != 'demo.webp'){
-            $imagePath = public_path('image/client') . '/' . $data->img;
-            if (File::exists($imagePath)) {
-                File::delete($imagePath);
+            if ($data->img != 'demo.webp') {
+                $imagePath = public_path('image/client') . '/' . $data->img;
+                if (File::exists($imagePath)) {
+                    File::delete($imagePath);
+                }
             }
-        }}
+        }
         $data->delete();
         Toastr::warning('Client Delete Success', 'Success');
         return redirect()->back();
     }
-    public function details($id){
+    public function details($id)
+    {
         $data = Client::findOrFail($id);
-        return view('dashboard.pages.client.details',compact('data'));
+        return view('dashboard.pages.client.details', compact('data'));
     }
 }

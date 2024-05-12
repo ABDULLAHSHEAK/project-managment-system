@@ -128,6 +128,18 @@
                                             </span>
                                         @enderror
                                     </div>
+                                      {{-- password  --}}
+                                    <div class="mb-3">
+                                        <label for="inputPassword" class="form-label">Password *</label>
+                                        <input type="password" id="password" name="password"
+                                            class="form-control @error('password') is-invalid @enderror" id="inputPassword"
+                                            placeholder="Password">
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                     {{-- img --}}
                                     <div class="mb-3">
                                         <label for="img" class="form-label">Image</label>
@@ -140,7 +152,7 @@
                                         @enderror
                                     </div> <br>
 
-                                    <button type="submit" class="btn btn-primary d-block w-100 mb-3">Singup</button>
+                                    <button type="submit" class="btn btn-primary d-block w-100 mb-3">Submit</button>
                                 </form>
                             </div>
                         </div>

@@ -5,7 +5,7 @@
               <span class="icon-nav m-0 h5" onclick="MenuBarClickHandler()">
                   <img class="nav-logo-sm mx-2" src="{{ asset('admin') }}/images/menu.svg" alt="logo" />
               </span>
-              <img class="nav-logo  mx-2" src="{{ asset('admin') }}/images/logo.png" />
+              <img class="nav-logo  mx-2" src="{{ asset('admin') }}/images/logod.png" />
           </a>
 
           <div class="float-right h-auto d-flex">

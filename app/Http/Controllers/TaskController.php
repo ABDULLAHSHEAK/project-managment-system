@@ -117,29 +117,4 @@ class TaskController extends Controller
         $data = $id;
         return view('dashboard.pages.task.add',compact('employers', 'projects', 'data'));
     }
-    // public function SaveTask(Request $request)
-    // {
-    //     $request->validate([
-    //         'name' => 'required|string',
-    //         'start_date' => 'required',
-    //         'deadline' => 'required',
-    //         'summary' => 'required|string',
-    //         'status' => 'required',
-    //         'completion_status' => 'required',
-    //         'employer_id' => 'required',
-    //         'project_id' => 'required',
-    //     ]);
-    //     $input = $request->all();
-    //     if ($request->hasFile('file')) {
-    //         $fileName = time() . '.' . $request->file->extension();
-    //         $request->file->move(public_path('image/task'), $fileName);
-    //         $input['file'] = $fileName;
-    //     } else {
-    //         $input['file'] = null;
-    //     }
-
-    //     Task::create($input);
-    //     Toastr::success('Task Create Success.', 'Success');
-    //     return redirect()->back();
-    // }
 }

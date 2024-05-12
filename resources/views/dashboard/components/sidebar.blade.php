@@ -39,7 +39,7 @@
 
     <div class="mainmenu">
         <a href="javascript:void(0)" class="side-bar-item" id="firstmenu">
-            <i class="bi bi-person-video3"></i>
+         <i class="bi bi-bookmarks-fill"></i>
             <span class="side-bar-item-caption">Categorys</span>
             <i class="bi bi-arrow-right-short sub-icone"></i>
         </a>
@@ -100,7 +100,7 @@
 
     <div class="mainmenu">
         <a href="javascript:void(0)" class="side-bar-item" id="firstmenu">
-            <i class="bi bi-person-video3"></i>
+            <i class="bi bi-diagram-3-fill"></i>
             <span class="side-bar-item-caption">Project</span>
             <i class="bi bi-arrow-right-short sub-icone"></i>
         </a>
@@ -120,6 +120,30 @@
             <a href="{{ url('dashboard/task') }}">
                 <i class="bi bi-dash-circle"></i>
                 <span>Task</span>
+            </a> <br>
+            <a href="{{ url('dashboard/collection') }}">
+                <i class="bi bi-dash-circle"></i>
+                <span>Collection</span>
+            </a>
+        </div>
+    </div>
+
+ <!-- Expense  -->
+
+    <div class="mainmenu">
+        <a href="javascript:void(0)" class="side-bar-item" id="firstmenu">
+            <i class="bi bi-cash-coin"></i>
+            <span class="side-bar-item-caption">Expense</span>
+            <i class="bi bi-arrow-right-short sub-icone"></i>
+        </a>
+        <div class="sub-menu" id="submenu" style="display: none;">
+            <a href="{{url('dashboard/expense-category')}}">
+                <i class="bi bi-dash-circle"></i>
+                <span>Expense Category</span>
+            </a> <br>
+            <a href="{{ url('dashboard/expense') }}">
+                <i class="bi bi-dash-circle"></i>
+                <span>All Expense</span>
             </a>
         </div>
     </div>
@@ -127,17 +151,17 @@
 
     <!-- report  -->
 
-    <div class="mainmenu">
-        <a href="report.html" class="side-bar-item" id="firstmenu">
+    {{-- <div class="mainmenu">
+        <a href="#" class="side-bar-item" id="firstmenu">
             <i class="bi bi-file-earmark-bar-graph"></i>
             <span class="side-bar-item-caption">Report </span>
         </a>
-    </div>
+    </div> --}}
 
     <!-- setting  -->
 
     <div class="mainmenu">
-        <a href="setting.html" class="side-bar-item" id="firstmenu">
+        <a href="#" class="side-bar-item" id="firstmenu">
             <i class="bi bi-gear-fill"></i>
             <span class="side-bar-item-caption">Settings </span>
         </a>

@@ -8,7 +8,7 @@
           <!-- -- ------- Quick view item ----- -- -->
           <div class="quick-view p-2">
             <div class="quick bg-gradient-primary rounded color-white">
-              <a href="user.html" class="quick-text">
+              <a href="#" class="quick-text">
                 All Users
               </a>
             </div>
@@ -17,7 +17,7 @@
           <!-- -- ------- Quick view item ----- -- -->
           <div class="quick-view p-2">
             <div class="quick bg-gradient-secondary rounded color-white">
-              <a href="profile.html" class="quick-text">
+              <a href="#" class="quick-text">
                 Profile
               </a>
             </div>
@@ -26,7 +26,7 @@
           <!-- -- ------- Quick view item ----- -- -->
           <div class="quick-view p-2">
             <div class="quick  bg-gradient-warning rounded color-white">
-              <a href="trainer.html" class="quick-text">
+              <a href="#" class="quick-text">
                 Trainer
               </a>
             </div>
@@ -35,7 +35,7 @@
           <!-- -- ------- Quick view item ----- -- -->
           <div class="quick-view p-2">
             <div class="quick bg-gradient-info rounded color-white">
-              <a href="member.html" class="quick-text">
+              <a href="#" class="quick-text">
                 Total Projects
               </a>
             </div>
@@ -44,7 +44,7 @@
           <!-- -- ------- Quick view item ----- -- -->
           <div class="quick-view p-2">
             <div class="quick bg-gradient-danger rounded color-white">
-              <a href="package.html" class="quick-text">
+              <a href="#" class="quick-text">
                 Total Clients
               </a>
             </div>
@@ -53,7 +53,7 @@
           <!-- -- ------- Quick view item ----- -- -->
           <div class="quick-view p-2">
             <div class="quick bg-gradient-warning rounded color-white">
-              <a href="payment.html" class="quick-text">
+              <a href="#" class="quick-text">
                 Make Payment
               </a>
             </div>
@@ -62,49 +62,49 @@
           <!-- -- ------- Quick view item ----- -- -->
           <div class="quick-view p-2">
             <div class="quick bg-gradient-primary rounded color-white">
-              <a href="health-checkup.html" class="quick-text">Total Employers</a>
+              <a href="#" class="quick-text">Total Employers</a>
             </div>
           </div>
 
           <!-- -- ------- Quick view item ----- -- -->
           <div class="quick-view p-2">
             <div class="quick bg-gradient-danger rounded color-white">
-              <a href="transaction.html" class="quick-text">Clients</a>
+              <a href="#" class="quick-text">Clients</a>
             </div>
           </div>
 
           <!-- -- ------- Quick view item ----- -- -->
           <div class="quick-view p-2">
             <div class="quick bg-gradient-info rounded color-white">
-              <a href="report.html" class="quick-text">Report</a>
+              <a href="#" class="quick-text">Report</a>
             </div>
           </div>
 
           <!-- -- ------- Quick view item ----- -- -->
           <div class="quick-view p-2">
             <div class="quick bg-gradient-info rounded color-white">
-              <a href="add-member.html" class="quick-text">Add Client</a>
+              <a href="#" class="quick-text">Add Client</a>
             </div>
           </div>
 
           <!-- -- ------- Quick view item ----- -- -->
           <div class="quick-view p-2">
             <div class="quick bg-gradient-info rounded color-white">
-              <a href="add-trainer.html" class="quick-text">Add Employers</a>
+              <a href="#" class="quick-text">Add Employers</a>
             </div>
           </div>
 
           <!-- -- ------- Quick view item ----- -- -->
           <div class="quick-view p-2">
             <div class="quick bg-gradient-info rounded color-white">
-              <a href="add-user.html" class="quick-text">Add User</a>
+              <a href="#" class="quick-text">Add User</a>
             </div>
           </div>
 
           <!-- -- ------- Quick view item ----- -- -->
           <div class="quick-view p-2">
             <div class="quick bg-gradient-info rounded color-white">
-              <a href="add-package.html" class="quick-text">Add Projects</a>
+              <a href="#" class="quick-text">Add Projects</a>
             </div>
           </div>
 

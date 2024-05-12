@@ -109,7 +109,7 @@
                                             {{-- Status  --}}
                                             {{-- ----- status --  --}}
                                             <div class="mb-3">
-                                                <label for="status" class="form-label">Member Status *</label>
+                                                <label for="status" class="form-label">Status *</label>
                                                 <select id="status" name="status"
                                                     class="form-select @error('status') is-invalid @enderror">
                                                     <option value="">Select Status</option>
@@ -226,9 +226,43 @@
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                    </div><br>
+                                    </div>
 
-                                    <button type="submit" class="btn btn-primary d-block w-100 mb-3">Singup</button>
+                                    {{-- ------ project collect ---  --}}
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            {{-- amount --}}
+                                            <div class="mb-3">
+                                                <label for="amount" class="form-label">Project Amount*</label>
+                                                <input type="number" id="amount" name="amount"
+                                                    class="form-control @error('amount') is-invalid @enderror"
+                                                    placeholder="Enter Collection Amount" value="{{ old('amount') }}">
+                                                @error('amount')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            {{-- collect --}}
+                                            <div class="mb-3">
+                                                <label for="collect" class="form-label">Project Advance*</label>
+                                                <input type="number" id="collect" name="collect"
+                                                    class="form-control @error('collect') is-invalid @enderror"
+                                                    placeholder="Enter Collection Collect" value="{{ old('collect') }}">
+                                                @error('collect')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                    <button type="submit" class="btn btn-primary d-block w-100 mb-3">Submit</button>
                                 </form>
                             </div>
                         </div>
