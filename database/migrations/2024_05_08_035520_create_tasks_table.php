@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('completion_status');
             $table->foreignId('employer_id')->constrained('employers');
             $table->foreignId('project_id')->constrained('projects');
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('phone');
             $table->text('address');
             $table->string('gender');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->string('img');
             $table->timestamps();
         });

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->text('address');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->foreignId('category_id')->constrained('employer_categories');
             $table->string('img');
             $table->timestamps();
