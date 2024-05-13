@@ -86,7 +86,10 @@ class TaskController extends Controller
             $task->update($input);
 
             Toastr::success('Task Updated successfully.', 'Success');
-            return redirect(url('dashboard/task'));
+            if(auth()->user()->user_type === 'admin'){
+                return redirect(url('dashboard/task'));
+            }
+            return redirect()->back();
     }
 
     public function destroy($id)

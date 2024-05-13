@@ -28,7 +28,7 @@ class Project extends Model
     }
 
     public function memberData(){
-        return $this->hasOne(ProjectMember::class,'project_id');
+        return $this->hasMany(ProjectMember::class,'project_id', 'id');
     }
 
 

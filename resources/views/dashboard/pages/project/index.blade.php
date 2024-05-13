@@ -30,11 +30,14 @@
     <!-- ------- main content --------  -->
     <div class="container-fluid">
         <div class="row">
+            @if (auth()->user()->user_type === 'admin')
             <a href="{{ url('dashboard/project/create') }}" class="btn btn-success float-end">Add Project</a>
+            @endif
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="tableData" class="table">
+                      @if (auth()->user()->user_type === 'admin')
+                            <table id="tableData" class="table">
                             <thead class="bg-gradient-light">
                                 <tr>
                                     <th>NO:</th>
@@ -101,6 +104,47 @@
                                 @endforeach
                             </tbody>
                         </table>
+                      @else
+                            <table id="tableData" class="table">
+                            <thead class="bg-gradient-light">
+                                <tr>
+                                    <th>NO:</th>
+                                    <th>Project Name</th>
+                                    <th>Deadline</th>
+                                    <th>Category</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($data as $project)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $project->name }}</td>
+                                        <td>{{ $project->deadline }}</td>
+                                        <td>{{ $project->category->category_name }}</td>
+                                        <td>
+                                            <!-- Example single danger button -->
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-danger dropdown-toggle"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Options
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item"
+                                                            href="{{ url('/dashboard/project/' . $project->id . '/details') }}">View
+                                                            Details</a></li>
+                                                    <li><a class="dropdown-item"
+                                                            href="{{ url('dashboard/note-add/' . $project->id) }}">Add Note</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @include('dashboard.modal.project-delete')
+                                @endforeach
+                            </tbody>
+                        </table>
+                      @endif
                     </div>
                 </div>
             </div>

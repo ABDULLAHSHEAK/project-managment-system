@@ -35,23 +35,21 @@
                         <div class="card">
                             <div class="card-body">
                                 <form action="">
-                                    <label class="form-label">First Name *</label>
-                                    <input value="{{ $data->first_name }}" type="text" class="form-control" required>
 
-                                    <label class="form-label">Last Name *</label>
-                                    <input value="{{ $data->last_name }}" type="text" class="form-control" required>
+                                    <label class="form-label"> Name</label>
+                                    <input disabled value="{{ $data->name }}" type="text" class="form-control" required>
 
-                                    <label class="form-label">User Email *</label>
-                                    <input value="{{ $data->email }}" type="email" class="form-control" required>
+                                    <label class="form-label">User Email</label>
+                                    <input disabled value="{{ $data->email }}" type="email" class="form-control" required>
 
-                                    <label class="form-label">User Mobile *</label>
-                                    <input value="{{ $data->number }}" type="text" class="form-control" required>
+                                    <label class="form-label">User Mobile</label>
+                                    <input disabled value="{{ $data->number }}" type="text" class="form-control" required>
 
-                                    <label class="form-label">User Password *</label>
-                                    <input value="{{ $data->password }}" type="password" class="form-control" required>
+                                    <label class="form-label">User Password</label>
+                                    <input disabled value="{{ $data->password }}" type="password" class="form-control" required>
 
-                                    <label class="form-label">User Type *</label>
-                                    <select name="" class="form-control">
+                                    <label class="form-label">User Type</label>
+                                    <select disabled name="" class="form-control">
                                         <option value="{{ $data->user_type }}">{{ $data->user_type }}</option>
                                         <option value="admin">admin</option>
                                         <option value="manager">manager</option>
@@ -59,8 +57,6 @@
                                     </select> <br>
 
                                     <br>
-
-                                    <button type="submit" class="btn btn-success">Update</button>
                                 </form>
                             </div>
                         </div>

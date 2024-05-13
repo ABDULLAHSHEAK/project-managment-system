@@ -16,11 +16,12 @@
                           <img class="icon-nav-img" src="{{ asset('admin') }}/images/user.webp" alt="" />
                           <h6 class="text-black">
                               <p class="m-0 p-0">Welcome</p>
-                              <p>Johnson</p>
+                              <p>{{auth()->user()->name}}</p>
+                              <p>{{auth()->user()->number}}</p>
                           </h6>
                           <hr class="user-dropdown-divider  p-0" />
                       </div>
-                      <a href="profile.html" class="side-bar-item">
+                      <a href="{{route('profile.user')}}" class="side-bar-item">
                           <span class="side-bar-item-caption">Profile</span>
                       </a>
                       <a href="{{ route('logout') }}" class="side-bar-item"

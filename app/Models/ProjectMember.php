@@ -12,4 +12,13 @@ class ProjectMember extends Model
         'project_id',
         'member_id',
     ];
+    public function project(){
+        return $this->belongsTo(Project::class, 'project_id', 'id');
+    }
+
+    public function memberProject()
+    {
+        return $this->belongsTo(Employer::class, 'member_id', 'id');
+    }
+
 }

@@ -22,4 +22,9 @@ class Employer extends Model
     function employerCategory(){
         return $this->belongsTo(EmployerCategory::class , 'category_id');
     }
+
+    public function projectData()
+    {
+        return $this->hasMany(ProjectMember::class, 'member_id', 'id');
+    }
 }

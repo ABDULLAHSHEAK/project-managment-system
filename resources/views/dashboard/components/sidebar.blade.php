@@ -6,6 +6,7 @@
         <span class="side-bar-item-caption">Dashboard</span>
     </a>
 
+@if (auth()->user()->user_type === 'admin')
 
     <!-- profile  -->
 
@@ -147,6 +148,24 @@
             </a>
         </div>
     </div>
+@else
+     <!-- Project  -->
+
+    <div class="mainmenu">
+        <a href="javascript:void(0)" class="side-bar-item" id="firstmenu">
+            <i class="bi bi-diagram-3-fill"></i>
+            <span class="side-bar-item-caption">Project</span>
+            <i class="bi bi-arrow-right-short sub-icone"></i>
+        </a>
+        <div class="sub-menu" id="submenu" style="display: none;">
+            <a href="{{url('dashboard/project')}}">
+                <i class="bi bi-dash-circle"></i>
+                <span>All Project</span>
+            </a>
+        </div>
+    </div>
+
+@endif
 
 
     <!-- report  -->
@@ -160,12 +179,12 @@
 
     <!-- setting  -->
 
-    <div class="mainmenu">
+    {{-- <div class="mainmenu">
         <a href="#" class="side-bar-item" id="firstmenu">
             <i class="bi bi-gear-fill"></i>
             <span class="side-bar-item-caption">Settings </span>
         </a>
-    </div>
+    </div> --}}
 </div>
 
 <script>

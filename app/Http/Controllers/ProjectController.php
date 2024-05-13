@@ -22,8 +22,15 @@ class ProjectController extends Controller
 
     public function index()
     {
-      
         $data = Project::with('memberData')->get();
+
+        if (auth()->user()->user_type === 'employer') {
+            $user = auth()->user()->employer_id;
+            $data = Project::with('memberData')->whereHas('memberData', function ($q) use ($user) {
+                $q->where('member_id', $user);
+            })->get();
+        }
+
         return view('dashboard.pages.project.index', compact('data'));
     }
 
@@ -120,10 +127,14 @@ class ProjectController extends Controller
 
         $memberIds = array_column($dataArray, 'member_id');
         $memberData = Employer::whereIn('id', $memberIds)->get();
-
-        $notes = Note::where('project_id', '=' , $id)->get();
-        $tasks = Task::where('project_id', '=' , $id)->get();
-        $collection = Collection::where('project_id', '=' , $id)->sum('collect');
-        return view('dashboard.pages.project.details', compact('project', 'memberData','notes','tasks','collection', 'memberIds'));
+        if(auth()->user()->user_type === 'admin'){
+            $tasks = Task::where('project_id', '=', $id)->get();
+        }else{
+            $member_id = auth()->user()->employer_id;
+            $tasks = Task::where('employer_id',$member_id)->get();
+        }
+        $notes = Note::where('project_id', '=', $id)->get();
+        $collection = Collection::where('project_id', '=', $id)->sum('collect');
+        return view('dashboard.pages.project.details', compact('project', 'memberData', 'notes', 'tasks', 'collection', 'memberIds'));
     }
 }
