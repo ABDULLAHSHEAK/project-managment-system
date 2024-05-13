@@ -30,40 +30,21 @@
     <!-- ------- main content --------  -->
     <div class="container-fluid">
         <div class="row">
+            <a href="{{ url('dashboard/employer-category') }}" class="btn btn-success float-end">Back</a>
             <div class="mainForm">
-                <a href="{{ url('dashboard/employer-category') }}" class="btn btn-success float-end">Back</a>
                 <div class="row">
                     <div class="col-12 col-md-8 p-1">
                         <div class="card">
                             <div class="card-body">
                                 <form method="POST" action="{{ url('dashboard/employer-category') }}" >
                                     @csrf
-                                      {{-- Category --}}
+                                    {{-- employer_category_name --}}
                                     <div class="mb-3">
-                                        <label for="category_id" class="form-label">Category *</label>
-                                        <select id="category_id" name="category_id"
-                                            class="form-select @error('category_id') is-invalid @enderror">
-                                            <option value="">Select Category</option>
-                                            @foreach ($categorys as $category)
-                                                <option value="{{ $category->id }}"
-                                                    {{ old('category_id') == $category->id ? 'selected' : '' }}>
-                                                    {{ $category->category_name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('category_id')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    {{-- amount --}}
-                                    <div class="mb-3">
-                                        <label for="amount" class="form-label">Expense Amount *</label>
-                                        <input type="number" id="amount" name="amount"
-                                            class="form-control @error('amount') is-invalid @enderror"
-                                            placeholder="Enter employer Category Name" value="{{ old('amount') }}">
-                                        @error('amount')
+                                        <label for="employer_category_name" class="form-label">Name *</label>
+                                        <input type="text" id="employer_category_name" name="employer_category_name"
+                                            class="form-control @error('employer_category_name') is-invalid @enderror"
+                                            placeholder="Enter employer Category Name" value="{{ old('employer_category_name') }}">
+                                        @error('employer_category_name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

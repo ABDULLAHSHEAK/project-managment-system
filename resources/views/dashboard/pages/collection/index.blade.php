@@ -61,9 +61,9 @@
                                                     Options
                                                 </button>
                                                 <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item"
+                                                    {{-- <li><a class="dropdown-item"
                                                             href="{{ url('/dashboard/collection/' . $collection->id . '/details') }}">View
-                                                            Details</a></li>
+                                                            Details</a></li> --}}
                                                     <li><a class="dropdown-item"
                                                             href="{{ url('dashboard/collection/' . $collection->id . '/edit') }}">Edit</a>
                                                     </li>
