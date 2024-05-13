@@ -31,9 +31,9 @@
     <div class="container-fluid">
         <div class="row">
             @if (auth()->user()->user_type === 'admin')
-            <a href="{{ url('dashboard/task') }}" class="btn btn-success float-end">Back</a>
+                <a href="{{ url('dashboard/task') }}" class="btn btn-success float-end">Back</a>
             @else
-            <a href="{{ url('dashboard/project') }}" class="btn btn-success float-end">Back</a>
+                <a href="{{ url('dashboard/project') }}" class="btn btn-success float-end">Back</a>
             @endif
             <div class="mainForm">
                 <div class="row">
@@ -49,11 +49,12 @@
                                 </div>
                             @endif
                             <div class="card-body">
-                                <form method="POST" action="{{ url('dashboard/task', $task->id) }}"
-                                    enctype="multipart/form-data">
-                                    @csrf
-                                    @method('PUT')
-                                    @if (auth()->user()->user_type === 'admin')
+
+                                @if (auth()->user()->user_type === 'admin')
+                                    <form method="POST" action="{{ url('dashboard/task', $task->id) }}"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
                                         {{-- name --}}
                                         <div class="mb-3">
                                             <label for="name" class="form-label">Task Name *</label>
@@ -234,7 +235,12 @@
                                             <br>
                                             <span class="p-3">{{ $task->file }}</span>
                                         </div>
-                                    @else
+                                        <button type="submit" class="btn btn-primary d-block w-100 mb-3">Update</button>
+                                    </form>
+                                @else
+                                    <form method="POST" action="{{ route('task.update', ['id' => $task->id]) }}"
+                                        enctype="multipart/form-data">
+                                        @csrf
                                         {{-- name --}}
                                         <div class="mb-3 d-none">
                                             <label for="name" class="form-label">Task Name *</label>
@@ -415,9 +421,10 @@
                                             <br>
                                             <span class="p-3">{{ $task->file }}</span>
                                         </div>
-                                    @endif
-                                    <button type="submit" class="btn btn-primary d-block w-100 mb-3">Update</button>
-                                </form>
+                                        <button type="submit" class="btn btn-primary d-block w-100 mb-3">Update</button>
+                                    </form>
+                                @endif
+
                             </div>
                         </div>
                     </div>

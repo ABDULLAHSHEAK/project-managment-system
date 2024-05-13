@@ -31,7 +31,13 @@
         <div class="row">
             <div class="mainForm">
                 <div class="row">
+                    @if (auth()->user()->user_type === 'admin')
+
                     <a href="{{ url('dashboard/task') }}" class="btn btn-success float-end">Back</a>
+                    @else
+                    <a href="{{ route('project.view') }}" class="btn btn-success float-end">Back</a>
+
+                    @endif
                     <div class="col-12 col-md-8 p-1">
                         <div class="card">
                             <div class="card-body">

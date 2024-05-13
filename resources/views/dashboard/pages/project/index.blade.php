@@ -131,11 +131,8 @@
                                                 </button>
                                                 <ul class="dropdown-menu">
                                                     <li><a class="dropdown-item"
-                                                            href="{{ url('/dashboard/project/' . $project->id . '/details') }}">View
+                                                            href="{{ url('/employer-dashboard/project/' . $project->id . '/details') }}">View
                                                             Details</a></li>
-                                                    <li><a class="dropdown-item"
-                                                            href="{{ url('dashboard/note-add/' . $project->id) }}">Add Note</a>
-                                                    </li>
                                                 </ul>
                                             </div>
                                         </td>

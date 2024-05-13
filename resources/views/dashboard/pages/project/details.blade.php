@@ -409,7 +409,7 @@
                                             <div class="row mt-3">
                                                 <div class="bg-light p-3">
                                                     <form
-                                                        action="{{ url('/dashboard/project/' . $project->id . '/details') }}"
+                                                        action="{{ url('/employer-dashboard/project/' . $project->id . '/details') }}"
                                                         method="POST" enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="row">
@@ -492,10 +492,10 @@
                                                                         </button>
                                                                         <ul class="dropdown-menu">
                                                                             <li><a class="dropdown-item"
-                                                                                    href="{{ url('/dashboard/task/' . $task->id . '/details') }}">View
+                                                                                    href="{{ url('/employer-dashboard/task/' . $task->id . '/details') }}">View
                                                                                     Details</a></li>
                                                                             <li><a class="dropdown-item"
-                                                                                    href="{{ url('dashboard/task/' . $task->id . '/edit') }}">Edit</a>
+                                                                                    href="{{ url('employer-dashboard/task', $task->id ) }}">Edit</a>
                                                                             </li>
                                                                         </ul>
                                                                     </div>

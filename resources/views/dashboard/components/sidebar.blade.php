@@ -158,7 +158,7 @@
             <i class="bi bi-arrow-right-short sub-icone"></i>
         </a>
         <div class="sub-menu" id="submenu" style="display: none;">
-            <a href="{{url('dashboard/project')}}">
+            <a href="{{route('project.view')}}">
                 <i class="bi bi-dash-circle"></i>
                 <span>All Project</span>
             </a>

@@ -4,17 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\HealthController;
-use App\Http\Controllers\MemberController;
+use App\Http\Controllers\OthersController;
 use App\Http\Controllers\ExpenseController;
-use App\Http\Controllers\PackageController;
 use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\CollectionController;
-use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\ExpenseCategoryController;
 use App\Http\Controllers\ProjectCategoryController;
 use App\Http\Controllers\EmployerCategoryController;
@@ -38,7 +33,9 @@ Auth::routes();
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
 
-Route::middleware(['auth'])->prefix('dashboard')->group(function () {
+
+
+Route::middleware(['auth',  'IsAdmin'])->prefix('dashboard')->group(function () {
 
     // ------- User Route ------
     Route::get('all-user', [UserController::class, 'index'])->name('user.view');
@@ -96,7 +93,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
 
 
 
-    // -------- Task Route ------------
+    // -------- Collection Route ------------
     Route::resource('collection', CollectionController::class);
 
     Route::post('project/{id}/details', [NoteController::class, 'AddNote'])->name('add.note');
@@ -106,16 +103,27 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::get('task/{id}/details', [TaskController::class, 'details']);
 
 
-    // -------- Project Category Route ------------
+    // -------- Expense Category Route ------------
     Route::resource('expense-category', ExpenseCategoryController::class);
     Route::get('expense-category/{id}/delete', [ExpenseCategoryController::class, 'destroy']);
     Route::get('expense-category/{id}/details', [ExpenseCategoryController::class, 'details']);
 
 
-    // -------- Project Category Route ------------
+    // -------- Expense Route ------------
     Route::resource('expense', ExpenseController::class);
     Route::get('expense/{id}/delete', [ExpenseController::class, 'destroy']);
     Route::get('expense/{id}/details', [ExpenseController::class, 'details']);
 
+
+});
+
+Route::middleware(['auth'])->prefix('employer-dashboard')->group(function (){
+    Route::get('project', [OthersController::class, 'index'])->name('project.view');
+    Route::get('project/{id}/details', [OthersController::class, 'details']);
+    Route::get('task/{id}/details', [OthersController::class, 'Taskdetails']);
+    Route::get('task/{id}', [OthersController::class, 'TaskEdit'])->name('task.edit');
+    Route::post('task/{id}', [OthersController::class, 'TaskUpdate'])->name('task.update');
+    Route::post('project/{id}/details', [OthersController::class, 'AddNote'])->name('add.note');
+    Route::get('profile-user', [OthersController::class, 'ProfileUser'])->name('profile.user');
 
 });
